@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/index.js",
-    "watch": "nodemon server.js"
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,11 +25,11 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
-  "devDependencies": {
-    "nodemon": "2.0.22"
-  },
   "bugs": {
     "url": "https://github.com/DustinSwecker/blog-spot-dynamo/issues"
   },
-  "homepage": "https://github.com/DustinSwecker/blog-spot-dynamo#readme"
+  "homepage": "https://github.com/DustinSwecker/blog-spot-dynamo#readme",
+  "devDependencies": {
+    "@types/express-handlebars": "^6.0.0"
+  }
 }
