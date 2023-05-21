@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
 //largely just pilfered from class content
 //new user /api/user
 router.post('/', async (req, res) => {
