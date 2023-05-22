@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
 //largely just pilfered from class content
 //new user /api/user
 router.post('/', async (req, res) => {
@@ -33,7 +34,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = userData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect email or password, please try again' });
@@ -58,7 +59,7 @@ router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       
-      return res.status(204).end();
+      return res.render('homepage');
     });
   } else {
     return res.status(404).end();
