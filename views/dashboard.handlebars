@@ -1,0 +1,13 @@
+{{#each userBlogs as |userBlogs|}}
+<div class="card blogpost col-12">
+    <div class = "card-title m-2">
+        <a href="/homepage/blog/{{userBlogs.id}}" class="card-link text-dark">{{userBlogs.post_title}}</a>
+    </div>
+  <div class="card-body">
+    
+    <p class="card-subtitle mb-2 text-white text-sm">Created by {{userData.username}} on {{userBlogs.createdAt}}<p>
+    <p class="card-text text-white">{{userBlogs.content}}</p>
+      
+  </div>
+</div>
+{{/each}}
