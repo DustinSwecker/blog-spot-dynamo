@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Blog } = require('../../models');
 
 
 //largely just pilfered from class content
@@ -44,9 +44,21 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+
+      })
       
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
+
+      
+      const userBlogs = await Blog.findAll({
+        where: {
+          username: userData.username
+        }
+      });
+      res.render('dashboard', {
+        userBlogs,
+        userData,
+        logged_in: req.session.logged_in
+      })
 
   } catch (err) {
     res.status(400).json(err);

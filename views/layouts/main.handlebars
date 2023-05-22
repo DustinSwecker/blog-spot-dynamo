@@ -12,29 +12,29 @@
 <body>
     <header>
         <nav class="navbar container-fluid">
-            <div class = "container-fluid text-center"><a class="navbar-brand mx-5" href="/homepage"><span id = "brand">Hotlanta</span>Blogs</a>
+            <div class = "container-fluid text-center"><a class="navbar-brand mx-5" href="/homepage"><span id = "brand">HOTLANTA</span>Blogs</a>
             </div>
             
            
         
-            <div class="container-fluid ">
+            <div id="navlist" class="container-fluid d-flex justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link mx-5  text-light" href="/homepage">Home</a>
+                        <a class="nav-link mx-2  text-light" href="/homepage">Home</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link mx-5  text-light" href="/dashboard">Dashboard</a>
+                        <a class="nav-link mx-2  text-light" href="/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-5  text-light" href="/login">Login</a>
+                        <a class="nav-link mx-2  text-light" href="/login">Login</a>
                     </li>
                     <li>
                         {{#if logged_in}}
-                        <a class="nav-link mx-5  text-light" id="logout" href="/">Logout</a>
+                        <a class="nav-link mx-2  text-light" id="logout" href="/">Logout</a>
                         {{/if}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-5  text-light" href="/signup">Signup</a>
+                        <a class="nav-link mx-2  text-light" href="/signup">Signup</a>
                     </li>
                 </ul>
             </div>
@@ -45,6 +45,7 @@
         {{#if logged_in}}
         <p id="welcome">Welcome, {{user.username}}!</p>
         {{/if}}
+        
         {{{body}}}
     </main>
     <footer class = "w-100 py-4 flex-shrink-0">
@@ -57,10 +58,10 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5 class="text-black mb-3">Quick links</h5>
-                    <ul class="list-unstyled text-black">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="/login">Login</a></li>
+                    <ul class="list-unstyled">
+                        <li><a class ="footerlinks" href="/">Home</a></li>
+                        <li><a class ="footerlinks" href="/dashboard">Dashboard</a></li>
+                        <li><a class ="footerlinks" href="/login">Login</a></li>
                     </ul>
                 </div>
             </div>
