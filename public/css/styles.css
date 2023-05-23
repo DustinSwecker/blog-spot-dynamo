@@ -17,7 +17,7 @@
 
 @keyframes slidein {
     from {
-        margin-left: 20%;
+        margin-left: 10%;
       
     }
     to {
@@ -41,10 +41,12 @@
 
 .nav-item:hover {
     opacity: 70%;
+    font-size: 22px;
     
 }
 
 #navlist {
+    height: 50px;
     background-image: url('https://images.unsplash.com/photo-1629194898512-b6b8697063ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRhcmslMjB0ZXh0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60');
 }
 
@@ -56,7 +58,7 @@ body {
     opacity: 80%;
 }
 .card-title {
-    background-image: url('https://images.unsplash.com/photo-1579492450119-80542d516179?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JpdHR5fGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'); 
+    background-color: #c5c6D0; 
     padding-left: 10px;
 }
 
@@ -65,7 +67,7 @@ body {
 }
 
 .card{
-    background-color: slategray;
+    background-color: #373737;
 }
 
 #signupform {
@@ -76,6 +78,12 @@ body {
 footer {
     background-image: url('https://images.unsplash.com/photo-1618327907215-4e514efabd41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60');
     background-size: cover;
+}
+
+#blogcontent {
+    height: 200px;
+    width:100%;
+    word-break: break-word;
 }
 
 .footer {
@@ -90,9 +98,5 @@ footer {
 @media only screen and (max-width: 768px) {
     #brand {
         font-size: 40px;
-        font-weight: bolder;
-        text-align: center;
-        margin-left: 20px;
-        animation: 5s 4 alternate slidein;
     }
 }
