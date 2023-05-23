@@ -6,7 +6,7 @@ const { Blog, User } = require('../models');
 router.get('/', async (req, res) => {
     try {
         if(!req.session.logged_in) {
-            return res.render('login');
+            return res.redirect('login');
 
         } else {
         const blogData = await Blog.findAll({
@@ -32,6 +32,7 @@ router.get('/', async (req, res) => {
             todayDate,
             logged_in: req.session.logged_in,
             username: req.session.username,
+            user_id: req.session.user_id
         });
     }
     } catch (err) {
@@ -39,5 +40,7 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
 
 module.exports = router;

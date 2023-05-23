@@ -1,0 +1,25 @@
+
+<div class="container-fluid card blogpost">
+    <div class = "card-title m-2">
+        <a href="/homepage/blog/{{userBlog.id}}" class="card-link text-dark">{{userBlog.post_title}}</a>
+    </div>
+  <div class="card-body">
+    
+    <p class="card-subtitle mb-2 text-white text-sm">Created by {{userBlog.user.username}} on {{userBlog.createdAt}}<p>
+    <p class="card-text text-white">{{userBlog.content}}</p>
+      
+  </div>
+</div>
+{{#each parseCommentData as |parseCommentData|}}
+<div class="container-fluid card comment">
+    <div class = "card-title m-2">
+        <p>Comment by {{user.username}} on {{parseCommentData.createdAt}}</p>
+    </div>
+  <div class="card-body">
+    
+   
+    <p class="card-text text-white">{{parseCommentData.comment}}</p>
+      
+  </div>
+</div>
+{{/each}}
