@@ -13,8 +13,13 @@ router.post('/', async (req, res) => {
         });
         req.session.save(() => {
             req.session.logged_in = true;
-            res.status(201).json(saveUser);
+            username = saveUser.username;
+            
         });
+        res.render('dashboard', {
+          logged_in: req.session.logged_in,
+          username: req.session.username,
+        })
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -36,28 +41,38 @@ router.post('/login', async (req, res) => {
 
     const validPassword = userData.checkPassword(req.body.password);
 
+
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.logged_in = true;
+      req.session.user_id = userData.id
 
       })
-      
 
-      
       const userBlogs = await Blog.findAll({
+        include: [
+          {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+        
         where: {
-          username: userData.username
+          creator_username: userData.id,
+    
         }
       });
+      
       res.render('dashboard', {
         userBlogs,
         userData,
-        logged_in: req.session.logged_in
+        logged_in: req.session.logged_in,
+        username: req.session.username,
       })
 
   } catch (err) {
@@ -71,7 +86,7 @@ router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       
-      return res.render('homepage');
+      res.status(204).end();
     });
   } else {
     return res.status(404).end();

@@ -1,10 +1,14 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models')
+const { Blog, User } = require('../models');
 
 
-//route to fill in blog data on the homepage
+// /dashboard routes
 router.get('/', async (req, res) => {
     try {
+        if(!req.session.logged_in) {
+            return res.render('login');
+
+        } else {
         const blogData = await Blog.findAll({
             include: [
                 {
@@ -13,18 +17,23 @@ router.get('/', async (req, res) => {
 
                 },
             ],
+            where: {
+                creator_username: req.session.user_id
+            }
         });
-        const blog = blogData.map((blog) => blog.get({ plain: true }));
+
+        const userBlog = blogData.map((blog) => blog.get({ plain: true }));
        
         const date = new Date();
         const todayDate = date.toLocaleDateString();
 
-        res.render('homepage', {
-            blog,
+        res.render('dashboard', {
+            userBlog,
             todayDate,
             logged_in: req.session.logged_in,
-            username: req.session.username
+            username: req.session.username,
         });
+    }
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

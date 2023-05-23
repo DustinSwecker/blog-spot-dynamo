@@ -1,13 +1,32 @@
-{{#each userBlogs as |userBlogs|}}
+<form>
+  <div class="form-group">
+    <label class="text-white" for="newblogpost">Create a new Blog</label>
+    <input type="text" class="form-control" id="blogtitle" placeholder="Blog Title">
+  </div>
+  <div class="form-group">
+    <label class="text-white" for="blogcontent">Blog Content</label>
+    <input type="text" class="form-control" id="blogcontent" placeholder="What do you want to say?">
+  </div>
+  <button type="submit" class="mt-1 btn btn-primary">Submit</button>
+</form>
+<br>
+<br>
+<h2 class="text-white">Your recent blog posts:</h2>
+{{#each userBlog as |userBlog|}}
 <div class="card blogpost col-12">
     <div class = "card-title m-2">
-        <a href="/homepage/blog/{{userBlogs.id}}" class="card-link text-dark">{{userBlogs.post_title}}</a>
+        <a href="/homepage/blog/{{userBlog.id}}" class="card-link text-dark">{{userBlog.post_title}}</a>
     </div>
   <div class="card-body">
     
-    <p class="card-subtitle mb-2 text-white text-sm">Created by {{userData.username}} on {{userBlogs.createdAt}}<p>
-    <p class="card-text text-white">{{userBlogs.content}}</p>
+    <p class="card-subtitle mb-2 text-white text-sm">Created by {{userData.username}} on {{userBlog.createdAt}}<p>
+    <p class="card-text text-white">{{userBlog.content}}</p>
       
+  </div>
+  <div class="container d-inline-flex">
+  <button type="button" class="btn btn-primary col-2"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+
+  <button type="button" class="btn btn-danger col-2"><i class="fa-sharp fa-solid fa-trash"></i>Delete</button>
   </div>
 </div>
 {{/each}}
