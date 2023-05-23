@@ -13,10 +13,11 @@ router.post('/', async (req, res) => {
         });
         req.session.save(() => {
             req.session.logged_in = true;
-            username = saveUser.username;
+            req.session.username = saveUser.username;
             
         });
         res.render('dashboard', {
+          saveUser,
           logged_in: req.session.logged_in,
           username: req.session.username,
         })
