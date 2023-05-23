@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const loginRoutes = require('./login_out');
+const dashboardRoutes = require('./dashboard')
 
 // /api/user
 router.use('/user', loginRoutes);
 
-router.get('/', async (req,res) => {
-    console.log('hi');
-});
+// /api/dashboard
+
+router.use('/dashboard', dashboardRoutes);
 
 module.exports = router;
