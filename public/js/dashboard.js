@@ -19,10 +19,13 @@ const handleNewBlog = async (event) => {
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
       });
+
+
   
       if (response.ok) {
+        
         // If successful, redirect the browser to the blogpost/:id page
-        document.location.replace(`/blogpost/${response.newBlog.id}`);
+        document.location.replace(`/blogpost/${response.id}`);
       } else {
         alert(response.statusText);
       }
