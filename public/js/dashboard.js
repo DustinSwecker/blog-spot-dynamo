@@ -1,3 +1,4 @@
+const buttonIdEl = getElementb
 
 const handleNewBlog = async (event) => {
     event.preventDefault();
@@ -19,7 +20,7 @@ const handleNewBlog = async (event) => {
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
       });
-        console.log(response.id);
+        console.log(response);
       if (response.ok) {
         document.location.replace(`/blogpost/${response.id}`);
         
@@ -36,8 +37,8 @@ const updateBlog = () => {
 const delBlog = async (e) => {
     try {
         const etarget = e.target;
-        console.log(etarget.parentNode);
-        const response = await fetch('/api/dashboard/:id', {
+        const blogId = etarget.getAttribute('data-blogid');
+        const response = await fetch(`/api/dashboard/${blogId}`, {
             method: 'DELETE',
           });
           if (response.ok) {
@@ -51,12 +52,14 @@ const delBlog = async (e) => {
 }
 
 
-
-
-
+if (document.querySelector('.updatebtn')) {
 document.querySelector('.updatebtn').addEventListener('click', updateBlog)
+}
 
-document.querySelector('.delbtn').addEventListener('click', delBlog)
+if (document.querySelector('#delbtn')) {
+document.querySelector('#delbtn').addEventListener('click', delBlog)
+}
+
 
   document
   .querySelector('.newblogpost')
