@@ -12,9 +12,21 @@ router.post('/newblog', async (req, res) => {
             creator_username: req.session.user_id,
     });
 
-        const userBlog = newBlog.get({ plain: true });
+        const blogData = await Blog.findOne({
+            include: [
+                {
+                    model: User,
+                    attribute: ['username'],
+                },
+            ],
+            where: {
+                id: newBlog.id,
+            }
+        });
 
-        return res.send({userBlog});
+        const userBlog = blogData.get({ plain: true });
+        console.log(userBlog);
+        return res.send(userBlog);
         // return res.render(`blogpost`, {
         //   userBlog,
         //   logged_in: req.session.logged_in,
@@ -37,7 +49,7 @@ router.put('/', async (req, res) => {
         res.status(500).json(err);
     }
 })
-
+// api/dashboard/:id to delete
 router.delete('/:id', async (req, res) => {
     try {
       const blogData = await Blog.destroy({
