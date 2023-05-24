@@ -5,8 +5,6 @@ const handleNewBlog = async (event) => {
     // Collect values from the newblogpost form
     const blogTitle = document.querySelector('#blogtitle').value.trim();
     const blogContent = document.querySelector('#blogcontent').value.trim();
-    console.log(blogTitle);
-    console.log(blogContent);
 
     if(!blogTitle) {
         alert('Please include a blog title!')
@@ -21,18 +19,44 @@ const handleNewBlog = async (event) => {
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
       });
-      console.log(response);
-
-
-  
+        console.log(response.id);
       if (response.ok) {
-        console.log('goodresponse');
+        document.location.replace(`/blogpost/${response.id}`);
         
       } else {
         alert(response.statusText);
       }
     }
   };
+
+const updateBlog = () => {
+
+}
+
+const delBlog = async (e) => {
+    try {
+        const etarget = e.target;
+        console.log(etarget.parentNode);
+        const response = await fetch('/api/dashboard/:id', {
+            method: 'DELETE',
+          });
+          if (response.ok) {
+            document.location.replace('/dashboard')
+          } else {
+            alert('Failed to delete blog')
+          }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+
+
+
+document.querySelector('.updatebtn').addEventListener('click', updateBlog)
+
+document.querySelector('.delbtn').addEventListener('click', delBlog)
 
   document
   .querySelector('.newblogpost')
