@@ -19,16 +19,47 @@ const handleNewBlog = async (event) => {
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+        console.log(response.id);
       if (response.ok) {
-        // If successful, redirect the browser to the blogpost/:id page
-        document.location.replace(`/blogpost/${response.newBlog.id}`);
+        document.location.replace(`/blogpost/${response.id}`);
+        
       } else {
         alert(response.statusText);
       }
     }
   };
 
+const updateBlog = () => {
+
+}
+
+const delBlog = async (e) => {
+    try {
+        const etarget = e.target;
+        console.log(etarget.parentNode);
+        const response = await fetch('/api/dashboard/:id', {
+            method: 'DELETE',
+          });
+          if (response.ok) {
+            document.location.replace('/dashboard')
+          } else {
+            alert('Failed to delete blog')
+          }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+
+
+
+document.querySelector('.updatebtn').addEventListener('click', updateBlog)
+
+document.querySelector('.delbtn').addEventListener('click', delBlog)
+
   document
   .querySelector('.newblogpost')
   .addEventListener('submit', handleNewBlog);
+
+

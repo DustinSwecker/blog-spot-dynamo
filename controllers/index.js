@@ -15,6 +15,17 @@ router.use('/dashboard', dashboardRoutes)
 // /blogpost
 router.use('/blogpost', blogPostRoutes)
 
+router.get('/', async (req, res) => {
+    try {
+        res.render('homepage', {
+            logged_in: req.session.logged_in,
+            username: req.session.username,
+        })
+    }catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
 
 router.get('/login', async (req, res) => {
     try {
