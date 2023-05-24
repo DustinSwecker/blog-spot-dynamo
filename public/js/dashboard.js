@@ -5,6 +5,8 @@ const handleNewBlog = async (event) => {
     // Collect values from the newblogpost form
     const blogTitle = document.querySelector('#blogtitle').value.trim();
     const blogContent = document.querySelector('#blogcontent').value.trim();
+    console.log(blogTitle);
+    console.log(blogContent);
 
     if(!blogTitle) {
         alert('Please include a blog title!')
@@ -19,13 +21,13 @@ const handleNewBlog = async (event) => {
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
       });
+      console.log(response);
 
 
   
       if (response.ok) {
+        console.log('goodresponse');
         
-        // If successful, redirect the browser to the blogpost/:id page
-        document.location.replace(`/blogpost/${response.id}`);
       } else {
         alert(response.statusText);
       }
@@ -35,3 +37,5 @@ const handleNewBlog = async (event) => {
   document
   .querySelector('.newblogpost')
   .addEventListener('submit', handleNewBlog);
+
+
