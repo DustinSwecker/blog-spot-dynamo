@@ -25,9 +25,9 @@
       
   </div>
   <div class="container d-inline-flex">
-  <button type="button" class="btn btn-primary updatebtn col-2"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+    <button data-blogid="{{userBlog.id}}" type="button" class="btn btn-primary updatebtn col-2"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
 
-  <button type="button" class="delbtn btn btn-danger col-2" data-blogid="{{userBlog.id}}"><i class="fa-sharp fa-solid fa-trash"></i>Delete</button>
+    <button type="button" class="delbtn btn btn-danger col-2" data-blogid="{{userBlog.id}}"><i class="fa-sharp fa-solid fa-trash"></i>Delete</button>
   </div>
 </div>
 {{/each}}

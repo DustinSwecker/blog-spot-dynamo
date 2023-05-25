@@ -1,3 +1,5 @@
+// Handlebars.registerPartial('updateInsert', '{{update}}');
+
 const handleNewBlog = async (event) => {
     event.preventDefault();
   
@@ -17,10 +19,10 @@ const handleNewBlog = async (event) => {
         method: 'POST',
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
-      });
-        console.log(response);
+      })
+      const parsedResponse = await response.json();
       if (response.ok) {
-        document.location.replace(`/blogpost/${response.id}`);
+        document.location.replace(`/blogpost/${parsedResponse.id}`);
         
       } else {
         alert(response.statusText);
@@ -28,8 +30,11 @@ const handleNewBlog = async (event) => {
     }
   };
 
-const updateBlog = () => {
-
+const openUpdateBlog = (e) => {
+    const etarget = e.target;
+    const blogId = etarget.getAttribute('data-blogid');
+    console.log(blogId);
+    document.location.replace(`/blogpost/update/${blogId}`);
 }
 
 const delBlog = async (e) => {
@@ -53,7 +58,7 @@ const delBlog = async (e) => {
 const userBlogs = $('#userblogs');
 
 if ($('.updatebtn')) {
-    userBlogs.on('click', '.updatebtn', updateBlog);
+    userBlogs.on('click', '.updatebtn', openUpdateBlog);
 }
 
 

@@ -26,7 +26,7 @@ router.post('/newblog', async (req, res) => {
 
         const userBlog = blogData.get({ plain: true });
         const blogId = userBlog.id;
-       res.redirect(`/blogpost/${blogId}`);
+       res.status(200).json(userBlog);
         // return res.render(`blogpost`, {
         //   userBlog,
         //   logged_in: req.session.logged_in,
@@ -41,14 +41,31 @@ router.post('/newblog', async (req, res) => {
     }
 });
 
+
+//api/dashboard
 router.put('/', async (req, res) => {
     try {
-        const updateBlog = await Blog.update(req.body)
+        if (!req.body) {
+            return;
+        } else {
+        const blogUpdate = await Blog.update({
+            post_title: req.body.updateBlogTitle,
+            content: req.body.updateBlogContent
+        }, 
+        {
+            where: {
+                id: req.body.blogId,
+                }
+            })
+            res.json(blogUpdate);
+        }
+        
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 })
+
 // api/dashboard/:id to delete
 router.delete('/:id', async (req, res) => {
     try {
