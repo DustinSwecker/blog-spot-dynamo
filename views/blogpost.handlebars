@@ -25,3 +25,15 @@
   </div>
 </div>
 {{/each}}
+{{#if logged_in}}
+<form data-id = "{{userBlog.id}}" class="col-6 addcomment">
+  <div class="form-group">
+    <label class="text-white" for="addcommentcontent">Comment:</label>
+    <input type="text" class="form-control" id="addcommentcontent">
+  </div>
+  <button type="submit" class="mt-1 btn btn-primary updatesubmit">Add comment</button>
+</form>
+
+{{/if}}
+
+<script src="/js/blogpost.js"></script>
