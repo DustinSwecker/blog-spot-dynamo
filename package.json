@@ -16,6 +16,9 @@
   },
   "keywords": [],
   "author": "",
+  "engines": {
+    "node": "16.18"
+  },
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",

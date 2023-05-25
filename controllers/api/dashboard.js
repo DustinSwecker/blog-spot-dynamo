@@ -25,8 +25,8 @@ router.post('/newblog', async (req, res) => {
         });
 
         const userBlog = blogData.get({ plain: true });
-        console.log(userBlog);
-        return res.send(userBlog);
+        const blogId = userBlog.id;
+       res.redirect(`/blogpost/${blogId}`);
         // return res.render(`blogpost`, {
         //   userBlog,
         //   logged_in: req.session.logged_in,

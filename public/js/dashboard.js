@@ -1,5 +1,3 @@
-const buttonIdEl = getElementb
-
 const handleNewBlog = async (event) => {
     event.preventDefault();
   
@@ -51,15 +49,17 @@ const delBlog = async (e) => {
     }
 }
 
+//setting up jquery style element selector for the entire userblogs in order to perform event delegation to target the individual buttons
+const userBlogs = $('#userblogs');
 
-if (document.querySelector('.updatebtn')) {
-document.querySelector('.updatebtn').addEventListener('click', updateBlog)
+if ($('.updatebtn')) {
+    userBlogs.on('click', '.updatebtn', updateBlog);
 }
 
-if (document.querySelector('#delbtn')) {
-document.querySelector('#delbtn').addEventListener('click', delBlog)
-}
 
+if ($('.delbtn')) {
+    userBlogs.on('click', '.delbtn', delBlog);
+}
 
   document
   .querySelector('.newblogpost')
