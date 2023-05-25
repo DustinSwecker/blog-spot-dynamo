@@ -27,13 +27,6 @@ router.post('/newblog', async (req, res) => {
         const userBlog = blogData.get({ plain: true });
         const blogId = userBlog.id;
        res.status(200).json(userBlog);
-        // return res.render(`blogpost`, {
-        //   userBlog,
-        //   logged_in: req.session.logged_in,
-        //   username: req.session.username,
-        //   user_id: req.session.user_id,
-
-        // });
 
     } catch (err) {
         console.log(err);

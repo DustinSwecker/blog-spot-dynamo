@@ -14,9 +14,7 @@ router.get('/:id', async (req, res) => {
 
                 },
             ],
-        });
-
-        
+        });        
 
         const userBlog = blogData.get({ plain: true });
 
@@ -77,5 +75,25 @@ router.get('/update/:id', async (req, res) => {
 });
 
 
+// blogpost/comment--prob shoulda been api route
+router.post('/comment', async (req, res) => {
+    try {
+        
+        const newComment = await Comment.create({
+            
+            comment: req.body.commentContent,
+            commenters_id: req.session.user_id,
+            blog_id: req.body.blogId
+    });
+
+        const parseCommentData = newComment.get({ plain: true });
+        
+       res.status(200).json(parseCommentData);
+       
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
