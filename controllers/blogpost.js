@@ -20,7 +20,6 @@ router.get('/:id', async (req, res) => {
 
         const userBlog = blogData.get({ plain: true });
 
-        console.log(userBlog);
 
         const commentData = await Comment.findAll({
             include: [
@@ -47,6 +46,31 @@ router.get('/:id', async (req, res) => {
             user_id: req.session.user_id
         });
     } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// blogpost/update/:id
+router.get('/update/:id', async (req, res) => {
+    try {
+        const blogData = await Blog.findByPk(req.params.id); 
+        const userBlog = blogData.get({ plain: true });
+        
+        const date = new Date();
+        const todayDate = date.toLocaleDateString();
+
+        res.render('updateblogpost', {
+            userBlog,
+            todayDate,
+            logged_in: req.session.logged_in,
+            username: req.session.username,
+            user_id: req.session.user_id
+
+        })
+
+    }
+    catch (err) {
         console.log(err);
         res.status(500).json(err);
     }

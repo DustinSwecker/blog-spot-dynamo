@@ -12,6 +12,7 @@
 <br>
 <br>
 <h2 class="text-white">Your recent blog posts:</h2>
+<div id = "userblogs">
 {{#each userBlog as |userBlog|}}
 <div class="card blogpost col-12">
     <div class = "card-title m-2">
@@ -24,11 +25,13 @@
       
   </div>
   <div class="container d-inline-flex">
-  <button type="button" class="btn btn-primary updatebtn col-2"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+    <button data-blogid="{{userBlog.id}}" type="button" class="btn btn-primary updatebtn col-2"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
 
-  <button id="delbtn{{userBlog.id}}" type="button" class="btn btn-danger col-2" data-blogid="{{userBlog.id}}"><i class="fa-sharp fa-solid fa-trash delbtn"></i>Delete</button>
+    <button type="button" class="delbtn btn btn-danger col-2" data-blogid="{{userBlog.id}}"><i class="fa-sharp fa-solid fa-trash"></i>Delete</button>
   </div>
 </div>
 {{/each}}
+</div>
 
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 <script src="/js/dashboard.js"></script>

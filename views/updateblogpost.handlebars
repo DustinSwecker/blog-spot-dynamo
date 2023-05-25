@@ -1,0 +1,13 @@
+<form data-id = "{{userBlog.id}}" class="updateblog">
+  <div class="form-group">
+    <label class="text-white" for="updateblogtitle">Update your blog</label>
+    <input type="text" value = "{{userBlog.post_title}}"class="form-control" id="updateblogtitle">
+  </div>
+  <div class="form-group">
+    <label class="text-white" for="updateblogcontent">Blog Content</label>
+    <input type="text" value = "{{userBlog.content}}" class="form-control" id="updateblogcontent">
+  </div>
+  <button type="submit" class="mt-1 btn btn-primary updatesubmit">Submit</button>
+</form>
+
+<script src="/js/update.js"></script>

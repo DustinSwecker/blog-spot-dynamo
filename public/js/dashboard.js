@@ -1,4 +1,4 @@
-const buttonIdEl = getElementb
+// Handlebars.registerPartial('updateInsert', '{{update}}');
 
 const handleNewBlog = async (event) => {
     event.preventDefault();
@@ -19,10 +19,10 @@ const handleNewBlog = async (event) => {
         method: 'POST',
         body: JSON.stringify({ blogTitle, blogContent }),
         headers: { 'Content-Type': 'application/json' },
-      });
-        console.log(response);
+      })
+      const parsedResponse = await response.json();
       if (response.ok) {
-        document.location.replace(`/blogpost/${response.id}`);
+        document.location.replace(`/blogpost/${parsedResponse.id}`);
         
       } else {
         alert(response.statusText);
@@ -30,8 +30,11 @@ const handleNewBlog = async (event) => {
     }
   };
 
-const updateBlog = () => {
-
+const openUpdateBlog = (e) => {
+    const etarget = e.target;
+    const blogId = etarget.getAttribute('data-blogid');
+    console.log(blogId);
+    document.location.replace(`/blogpost/update/${blogId}`);
 }
 
 const delBlog = async (e) => {
@@ -51,15 +54,17 @@ const delBlog = async (e) => {
     }
 }
 
+//setting up jquery style element selector for the entire userblogs in order to perform event delegation to target the individual buttons
+const userBlogs = $('#userblogs');
 
-if (document.querySelector('.updatebtn')) {
-document.querySelector('.updatebtn').addEventListener('click', updateBlog)
+if ($('.updatebtn')) {
+    userBlogs.on('click', '.updatebtn', openUpdateBlog);
 }
 
-if (document.querySelector('#delbtn')) {
-document.querySelector('#delbtn').addEventListener('click', delBlog)
-}
 
+if ($('.delbtn')) {
+    userBlogs.on('click', '.delbtn', delBlog);
+}
 
   document
   .querySelector('.newblogpost')
