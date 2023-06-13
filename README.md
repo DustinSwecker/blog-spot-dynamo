@@ -16,24 +16,24 @@ Just to go the site and you're good.
 
 Upon coming to the site you come to a landing page which shows you all the blogs saved to the database.  
 
-[Landing page](images/landing_page.png)
+![Landing page](images/landing_page.png)
 
 From there you can either sign up 
 
-[sign up](images/signup.png)
+![sign up](images/signup.png)
 
 or log in:
 
-[Log in](images/login.png)
+![Log in](images/login.png)
 
  depending on what was needed. Logging in or signing up will take you to the dashboard page 
  
- [Dashboard page](images/dashboard.png)
+ ![Dashboard page](images/dashboard.png)
 
 
  where you can write new blogs, update a blog or delete a blog. Clicking on any blog title will take you to that blog:
 
- [Blog page](images/blogwithcomments.png) 
+ ![Blog page](images/blogwithcomments.png) 
  
  
  where you can add comments, if logged in, or read all the available comments.
