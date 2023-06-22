@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User, Blog } = require('../../models');
 
 
-//largely just pilfered from class content
 //new user /api/user
 router.post('/', async (req, res) => {
     try {
@@ -11,7 +10,7 @@ router.post('/', async (req, res) => {
             email: req.body.email,
             password: req.body.password,
         });
-        console.log(saveUser);
+        
         req.session.save(() => {
             req.session.logged_in = true;
             req.session.username = saveUser.username;
