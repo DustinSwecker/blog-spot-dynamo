@@ -15,7 +15,8 @@ const hbs = exphbs.create({});
 const sess = {
     secret: 'Super secret secret',
     cookie: {
-      maxAge: 300000
+      maxAge: 300000,
+      httpOnly: false,
     },
     resave: false,
     saveUninitialized: true,
@@ -28,7 +29,7 @@ app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
+app.set('trust proxy', 1);
 
 
 app.use(express.json());
